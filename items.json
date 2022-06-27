@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Blender 1000",
+    "originalPrice": 99.5,
+    "reducedPrice": 79.5
+  },
+  {
+    "name": "Kettle 2000",
+    "originalPrice": 73.15,
+    "reducedPrice": 55.63
+  },
+  {
+    "name": "WasherDryer 3000",
+    "originalPrice": 999.95,
+    "reducedPrice": 599.95
+  },
+  {
+    "name": "Fridge 4000",
+    "originalPrice": 699.95,
+    "reducedPrice": 499.95
+  },
+  {
+    "name": "Microwave 5000",
+    "originalPrice": 299.99,
+    "reducedPrice": 99.99
+  }
+]
