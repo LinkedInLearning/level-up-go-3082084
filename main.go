@@ -14,15 +14,26 @@ var messages = []string{
 }
 
 // repeat concurrently prints out the given message n times
-func repeat(n int64, message string) {
-	panic("NOT IMPLEMENTED")
+func repeat(n int, message string) {
+	ch := make(chan struct{})
+	for i := 0; i < n; i++ {
+		go func(i int) {
+			log.Printf("[G%d]:%s\n", i, message)
+			ch <- struct{}{}
+		}(i)
+	}
+
+	for i := 0; i < n; i++ {
+		<-ch
+	}
 }
 
 func main() {
 	factor := flag.Int64("factor", 0, "The fan-out factor to repeat by")
 	flag.Parse()
+
 	for _, m := range messages {
-		log.Println(m)
-		repeat(*factor, m)
+		log.Printf("[Main]:%s\n", m)
+		repeat(int(*factor), m)
 	}
 }
