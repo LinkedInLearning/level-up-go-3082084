@@ -1,0 +1,111 @@
+[
+  {
+    "id": "100",
+    "name": "Eddie Jones",
+    "friends": [
+      "200",
+      "500",
+      "1200"
+    ]
+  },
+  {
+    "id": "200",
+    "name": "Kingston Ferreira",
+    "friends": [
+      "100",
+      "900"
+    ]
+  },
+  {
+    "id": "300",
+    "name": "Taylor Peters",
+    "friends": [
+      "700",
+      "1100"
+    ]
+  },
+  {
+    "id": "400",
+    "name": "Emma Downes",
+    "friends": [
+      "800",
+      "1000"
+    ]
+  },
+  {
+    "id": "500",
+    "name": "Dianne Monahan",
+    "friends": [
+      "100",
+      "600",
+      "1200"
+    ]
+  },
+  {
+    "id": "600",
+    "name": "Sophia Jones",
+    "friends": [
+      "500",
+      "900",
+      "1100"
+    ]
+  },
+  {
+    "id": "700",
+    "name": "Gail Fremont",
+    "friends": [
+      "300",
+      "900",
+      "1000"
+    ]
+  },
+  {
+    "id": "800",
+    "name": "Freja Payne",
+    "friends": [
+      "400",
+      "900",
+      "1200"
+    ]
+  },
+  {
+    "id": "900",
+    "name": "Cherry Eaton",
+    "friends": [
+      "200",
+      "600",
+      "800"
+    ]
+  },
+  {
+    "id": "1000",
+    "name": "Vinny Allan",
+    "friends": [
+      "400",
+      "700",
+      "1100",
+      "1200"
+    ]
+  },
+  {
+    "id": "1100",
+    "name": "Leilani Fox",
+    "friends": [
+      "300",
+      "600",
+      "1000",
+      "1200"
+    ]
+  },
+  {
+    "id": "1200",
+    "name": "Rebecca Fry",
+    "friends": [
+      "100",
+      "500",
+      "800",
+      "1000",
+      "1100"
+    ]
+  }
+]
