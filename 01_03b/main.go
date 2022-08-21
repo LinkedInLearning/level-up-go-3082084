@@ -8,18 +8,18 @@ import (
 
 const path = "entries.json"
 
-// raffleEntries is the struct we unmarshal raffle entries into
-type raffleEntries struct {
+// raffleEntry is the struct we unmarshal raffle entries into
+type raffleEntry struct {
 	// TODO: Fill in definition
 }
 
 // importData reads the raffle entries from file and creates the entries slice.
-func importData() []raffleEntries {
+func importData() []raffleEntry {
 	panic("NOT IMPLEMENTED")
 }
 
 // getWinner returns a random winner from a slice of raffle entries.
-func getWinner(entries []raffleEntries) raffleEntries {
+func getWinner(entries []raffleEntry) raffleEntry {
 	rand.Seed(time.Now().Unix())
 	wi := rand.Intn(len(entries))
 	return entries[wi]
