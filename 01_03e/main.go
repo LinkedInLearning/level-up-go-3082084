@@ -2,9 +2,9 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"math/rand"
+	"os"
 	"time"
 )
 
@@ -18,7 +18,7 @@ type raffleEntries struct {
 
 // importData reads the raffle entries from file and creates the entries slice.
 func importData() []raffleEntries {
-	file, err := ioutil.ReadFile(path)
+	file, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatal(err)
 	}
