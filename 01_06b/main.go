@@ -16,7 +16,7 @@ const path = "users.json"
 
 // getBiggestMarket takes in the slice of users and
 // returns the biggest market.
-func getBiggestMarket(u []User) (string, int) {
+func getBiggestMarket(users []User) (string, int) {
 	panic("NOT IMPLEMENTED")
 }
 
