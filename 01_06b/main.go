@@ -2,8 +2,8 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
+	"os"
 )
 
 // User represents a user record.
@@ -14,7 +14,8 @@ type User struct {
 
 const path = "users.json"
 
-// getBiggestMarket takes in the slice of users and returns the biggest market.
+// getBiggestMarket takes in the slice of users and
+// returns the biggest market.
 func getBiggestMarket(u []User) (string, int) {
 	panic("NOT IMPLEMENTED")
 }
@@ -22,12 +23,14 @@ func getBiggestMarket(u []User) (string, int) {
 func main() {
 	users := importData()
 	country, count := getBiggestMarket(users)
-	log.Printf("The biggest user market is %s with %d users.\n", country, count)
+	log.Printf("The biggest user market is %s with %d users.\n",
+		country, count)
 }
 
-// importData reads the raffle entries from file and creates the entries slice.
+// importData reads the raffle entries from file and
+// creates the entries slice.
 func importData() []User {
-	file, err := ioutil.ReadFile(path)
+	file, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatal(err)
 	}
