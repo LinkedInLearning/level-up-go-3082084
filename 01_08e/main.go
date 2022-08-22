@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"math/rand"
+	"os"
 	"time"
 )
 
@@ -40,10 +40,11 @@ func (f *Friends) getRandomFriend() Friend {
 	return f.getFriend(fmt.Sprint(id))
 }
 
-// spreadGossip ensures that all the friends in the map have heard the story
-func spreadGossip(root Friend, friends Friends, visited map[string]interface{}) {
+// spreadGossip ensures that all the friends in the map have heard the news
+func spreadGossip(root Friend, friends Friends,
+	visited map[string]interface{}) {
 	for _, id := range root.Friends {
-		if _, isVisited := visited[id];!isVisited {
+		if _, isVisited := visited[id]; !isVisited {
 			f := friends.getFriend(id)
 			f.hearGossip()
 			visited[id] = nil
@@ -63,7 +64,7 @@ func main() {
 
 // importData reads the input data from file and creates the friends map.
 func importData() Friends {
-	file, err := ioutil.ReadFile(path)
+	file, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatal(err)
 	}
