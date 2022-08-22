@@ -14,7 +14,7 @@ var messages = []string{
 }
 
 // repeat concurrently prints out the given message n times
-func repeat(n int64, message string) {
+func repeat(n int, message string) {
 	panic("NOT IMPLEMENTED")
 }
 
@@ -23,6 +23,6 @@ func main() {
 	flag.Parse()
 	for _, m := range messages {
 		log.Println(m)
-		repeat(*factor, m)
+		repeat(int(*factor), m)
 	}
 }
