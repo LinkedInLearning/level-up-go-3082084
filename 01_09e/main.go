@@ -4,7 +4,6 @@ import (
 	"container/heap"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"text/tabwriter"
@@ -55,7 +54,7 @@ func makePlaylist(albums [][]Song) []Song {
 		return playlist
 	}
 
-	//Initialize the heap and add first of each album, since they are the max.
+	// initialize the heap and add first of each album, since they are the max
 	heap.Init(pHeap)
 	for i, f := range albums {
 		firstSong := f[0]
@@ -64,11 +63,11 @@ func makePlaylist(albums [][]Song) []Song {
 	}
 
 	for pHeap.Len() != 0 {
-		// Take max elem from the list
+		// take max elem from the list
 		p := heap.Pop(pHeap)
 		song := p.(Song)
 		playlist = append(playlist, song)
-		// The next song after the max is a good candidate to look at
+		// the next song after the max is a good candidate to look at
 		if song.SongCount < len(albums[song.AlbumCount])-1 {
 			nextSong := albums[song.AlbumCount][song.SongCount+1]
 			nextSong.AlbumCount, nextSong.SongCount = song.AlbumCount, song.SongCount+1
@@ -97,7 +96,7 @@ func printTable(songs []Song) {
 
 // importData reads the input data from file and creates the friends map
 func importData() [][]Song {
-	file, err := ioutil.ReadFile(path)
+	file, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatal(err)
 	}

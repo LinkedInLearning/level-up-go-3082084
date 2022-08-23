@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"os"
 	"text/tabwriter"
@@ -41,7 +40,7 @@ func printTable(songs []Song) {
 
 // importData reads the input data from file and creates the friends map
 func importData() [][]Song {
-	file, err := ioutil.ReadFile(path)
+	file, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatal(err)
 	}

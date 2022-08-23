@@ -32,7 +32,8 @@ func calculate(expr string) float64 {
 }
 
 func main() {
-	expr := flag.String("expr", "", "The expression to calculate on, separated by spaces.")
+	expr := flag.String("expr", "", 
+	"The expression to calculate on, separated by spaces.")
 	flag.Parse()
 	result := calculate(*expr)
 	log.Printf("%s = %.2f\n", *expr, result)

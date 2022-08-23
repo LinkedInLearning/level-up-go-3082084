@@ -51,7 +51,8 @@ func calculate(expr string) (*float64, error) {
 }
 
 func main() {
-	expr := flag.String("expr", "", "The expression to calculate on, separated by spaces.")
+	expr := flag.String("expr", "",
+		"The expression to calculate on, separated by spaces.")
 	flag.Parse()
 	result, err := calculate(*expr)
 	if err != nil {
