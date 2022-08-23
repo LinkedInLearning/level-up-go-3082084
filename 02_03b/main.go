@@ -2,10 +2,10 @@ package main
 
 import "log"
 
-// the number of Gophers we need to serve lunch to
+// the number of attendees we need to serve lunch to
 const consumerCount = 300
 
-// foodCourses represents the types of resources to pass to the consumer goroutines.
+// foodCourses represents the types of resources to pass to the consumers
 var foodCourses = []string{
 	"Caprese Salad",
 	"Spaghetti Carbonara",
@@ -25,5 +25,6 @@ func serveLunch(course string) {
 }
 
 func main() {
-	log.Printf("Welcome to the GopherCon lunch! Serving %d gophers.\n", consumerCount)
+	log.Printf("Welcome to the conference lunch! Serving %d attendees.\n",
+		consumerCount)
 }
