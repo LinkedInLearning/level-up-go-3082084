@@ -56,8 +56,7 @@ func main() {
 	flag.Parse()
 	result, err := calculate(*expr)
 	if err != nil {
-		log.Println(err)
-		return
+		log.Fatal(err)
 	}
 	log.Printf("%s = %.2f\n", *expr, *result)
 }
