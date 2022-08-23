@@ -42,12 +42,12 @@ func (f *Friends) getRandomFriend() Friend {
 
 // spreadGossip ensures that all the friends in the map have heard the news
 func spreadGossip(root Friend, friends Friends,
-	visited map[string]interface{}) {
+	visited map[string]struct{}) {
 	for _, id := range root.Friends {
 		if _, isVisited := visited[id]; !isVisited {
 			f := friends.getFriend(id)
 			f.hearGossip()
-			visited[id] = nil
+			visited[id] = struct{}{}
 			spreadGossip(f, friends, visited)
 		}
 	}
@@ -57,8 +57,8 @@ func main() {
 	friends := importData()
 	root := friends.getRandomFriend()
 	root.hearGossip()
-	visited := make(map[string]interface{})
-	visited[root.ID] = nil
+	visited := make(map[string]struct{})
+	visited[root.ID] = struct{}{}
 	spreadGossip(root, friends, visited)
 }
 
