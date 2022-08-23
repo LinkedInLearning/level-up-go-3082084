@@ -70,7 +70,8 @@ func makePlaylist(albums [][]Song) []Song {
 		// the next song after the max is a good candidate to look at
 		if song.SongCount < len(albums[song.AlbumCount])-1 {
 			nextSong := albums[song.AlbumCount][song.SongCount+1]
-			nextSong.AlbumCount, nextSong.SongCount = song.AlbumCount, song.SongCount+1
+			nextSong.AlbumCount, nextSong.SongCount =
+				song.AlbumCount, song.SongCount+1
 			heap.Push(pHeap, nextSong)
 		}
 	}
