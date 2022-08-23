@@ -73,6 +73,6 @@ func main() {
 	executeWalk(ownerActions, dogActions)
 }
 
-func executeWalk(ownerActions []func(), dog []func()) {
+func executeWalk(ownerActions []func(), dogActions []func()) {
 	panic("NOT IMPLEMENTED")
 }
