@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// operators is the map of legal operators and their corresponding functions
+// operators is the map of legal operators and their functions
 var operators = map[string]func(x, y float64) float64{
 	"+": func(x, y float64) float64 { return x + y },
 	"-": func(x, y float64) float64 { return x - y },
@@ -26,7 +26,7 @@ func parseOperand(op string) (*float64, error) {
 	return &parsedOp, nil
 }
 
-// calculate returns the result of a 2 operand mathematical expression eg "2 + 3"
+// calculate returns the result of a 2 operand mathematical expression
 func calculate(expr string) (*float64, error) {
 	ops := strings.Fields(expr)
 	nops := len(ops)
@@ -43,7 +43,7 @@ func calculate(expr string) (*float64, error) {
 	}
 	f, ok := operators[ops[1]]
 	if !ok {
-		return nil, fmt.Errorf("cannot calculate: %s is unknown operator", ops[1])
+		return nil, fmt.Errorf("cannot calculate: %s is unknown", ops[1])
 	}
 
 	result := f(*left, *right)
