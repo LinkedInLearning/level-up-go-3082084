@@ -46,7 +46,7 @@ func (p *party) partyGoer(name string) {
 }
 
 func main() {
-	log.Println("Welcome to the Code Challenges party!")
+	log.Println("Welcome to the Level Up Go party!")
 	orderDrink := make(chan struct{}, bartenderCount)
 	finishDrink := make(chan struct{}, bartenderCount)
 	p := party{
@@ -59,5 +59,5 @@ func main() {
 	for i := 0; i < partyGoerCount; i++ {
 		go p.partyGoer(fmt.Sprint("Partygoer-", i))
 	}
-	log.Println("The Code Challenges party has ended! Good night!")
+	log.Println("The Level Up Go party has ended! Good night!")
 }
