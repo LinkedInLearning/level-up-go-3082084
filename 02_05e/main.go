@@ -21,7 +21,7 @@ type party struct {
 	endParty    chan struct{}
 }
 
-// registerDrink ensures that the drink made by the bartenders is incremented.
+// registerDrink ensures that the drink made by the bartenders is counted
 func (p *party) registerDrink() {
 	p.drinksLock.Lock()
 	defer p.drinksLock.Unlock()

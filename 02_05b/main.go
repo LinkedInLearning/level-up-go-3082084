@@ -18,7 +18,7 @@ type party struct {
 	finishDrink chan struct{}
 }
 
-// registerDrink ensures that the drink made by the bartenders is incremented.
+// registerDrink ensures that the drink made by the bartenders is counted.
 func (p *party) registerDrink() {
 	p.drinkCount++
 }
