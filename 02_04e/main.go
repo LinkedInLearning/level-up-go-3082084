@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-//the amount of bidders we have at our auction
+// the amount of bidders we have at our auction
 const bidderCount = 10
 
 // initial wallet value for all bidders
@@ -17,7 +17,7 @@ const walletAmount = 250
 var items = []string{
 	"The \"Best Gopher\" trophy",
 	"The \"Learn Go with Adelina\" experience",
-	"Two tickets to GopherCon",
+	"Two tickets to a Go conference",
 	"Signed copy of \"Beautiful Go code\"",
 	"Vintage Gopher plushie",
 }
@@ -58,7 +58,8 @@ func (a *auctioneer) processWinner(item string, bids <-chan bid) {
 			winner = cb
 		}
 	}
-	log.Printf("%s is sold to %s for %d!\n", item, winner.bidderID, winner.amount)
+	log.Printf("%s is sold to %s for %d!\n", item,
+		winner.bidderID, winner.amount)
 	a.bidders[winner.bidderID].payBid(winner.amount)
 }
 
@@ -78,7 +79,6 @@ func (b *bidder) placeBid(out chan<- bid, open <-chan struct{}) {
 		}
 		out <- currentBid
 	}
-
 }
 
 // payBid subtracts the bid amount from the wallet of the auction winner

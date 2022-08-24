@@ -17,7 +17,7 @@ const walletAmount = 250
 var items = []string{
 	"The \"Best Gopher\" trophy",
 	"The \"Learn Go with Adelina\" experience",
-	"Two tickets to GopherCon",
+	"Two tickets to a Go conference",
 	"Signed copy of \"Beautiful Go code\"",
 	"Vintage Gopher plushie",
 }
