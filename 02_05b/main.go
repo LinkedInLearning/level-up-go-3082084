@@ -38,10 +38,12 @@ func (p *party) bartender(name string) {
 // partyGoer is the partygoer functionality of the party
 func (p *party) partyGoer(name string) {
 	for {
-		p.orderDrink <- struct{}{}
-		log.Printf("%s orders a drink!", name)
-		<-p.finishDrink
-		log.Printf("%s enjoys a drink!\n", name)
+		select {
+		case p.orderDrink <- struct{}{}:
+			log.Printf("%s orders a drink!", name)
+			<-p.finishDrink
+			log.Printf("%s enjoys a drink!\n", name)
+		}
 	}
 }
 
