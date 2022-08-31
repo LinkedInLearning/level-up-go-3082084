@@ -28,7 +28,6 @@ func (p *coffeeShop) registerOrder() {
 	p.orderCount++
 	if p.orderCount == maxOrderCount {
 		close(p.closeShop)
-		return
 	}
 }
 
