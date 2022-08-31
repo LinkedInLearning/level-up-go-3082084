@@ -56,7 +56,7 @@ func (p *coffeeShop) customer(name string) {
 			<-p.finishCoffee
 			log.Printf("%s enjoys a coffee!\n", name)
 		case <-p.closeShop:
-			log.Printf("%s leave the shop! Bye!\n", name)
+			log.Printf("%s leaves the shop! Bye!\n", name)
 			return
 		}
 	}
