@@ -7,77 +7,77 @@ import (
 )
 
 // setup constants
-const bartenderCount = 3
-const partyGoerCount = 20
-const maxDrinkCount = 40
+const baristaCount = 3
+const customerCount = 20
+const maxOrderCount = 40
 
 // the total amount of drinks that the bartenders have made
-type party struct {
-	drinkCount int
-	drinksLock sync.Mutex
+type coffeeShop struct {
+	orderCount int
+	orderLock  sync.Mutex
 
-	orderDrink  chan struct{}
-	finishDrink chan struct{}
-	endParty    chan struct{}
+	orderCoffee  chan struct{}
+	finishCoffee chan struct{}
+	closeShop    chan struct{}
 }
 
-// registerDrink ensures that the drink made by the bartenders is counted
-func (p *party) registerDrink() {
-	p.drinksLock.Lock()
-	defer p.drinksLock.Unlock()
-	p.drinkCount++
-	if p.drinkCount == maxDrinkCount {
-		close(p.endParty)
+// registerOrder ensures that the order made by the baristas is counted
+func (p *coffeeShop) registerOrder() {
+	p.orderLock.Lock()
+	defer p.orderLock.Unlock()
+	p.orderCount++
+	if p.orderCount == maxOrderCount {
+		close(p.closeShop)
 		return
 	}
 }
 
-// bartender is the bartender functionality of the party
-func (p *party) bartender(name string) {
+// barista is the resource producer of the coffee shop
+func (p *coffeeShop) barista(name string) {
 	for {
 		select {
-		case <-p.orderDrink:
-			p.registerDrink()
-			log.Printf("%s makes a drink.\n", name)
-			p.finishDrink <- struct{}{}
-		case <-p.endParty:
-			log.Printf("%s goes home. Bye!\n", name)
+		case <-p.orderCoffee:
+			p.registerOrder()
+			log.Printf("%s makes a coffee.\n", name)
+			p.finishCoffee <- struct{}{}
+		case <-p.closeShop:
+			log.Printf("%s stops working. Bye!\n", name)
 			return
 		}
 	}
 }
 
-// partyGoer is the partygoer functionality of the party
-func (p *party) partyGoer(name string) {
+// customer is the resource consumer of the coffee shop
+func (p *coffeeShop) customer(name string) {
 	for {
 		select {
-		case p.orderDrink <- struct{}{}:
-			log.Printf("%s orders a drink!", name)
-			<-p.finishDrink
-			log.Printf("%s enjoys a drink!\n", name)
-		case <-p.endParty:
-			log.Printf("%s goes home! Bye!\n", name)
+		case p.orderCoffee <- struct{}{}:
+			log.Printf("%s orders a coffee!", name)
+			<-p.finishCoffee
+			log.Printf("%s enjoys a coffee!\n", name)
+		case <-p.closeShop:
+			log.Printf("%s leave the shop! Bye!\n", name)
 			return
 		}
 	}
 }
 
 func main() {
-	log.Println("Welcome to the Level Up Go party!")
-	orderDrink := make(chan struct{}, bartenderCount)
-	finishDrink := make(chan struct{}, bartenderCount)
-	endParty := make(chan struct{})
-	p := party{
-		orderDrink:  orderDrink,
-		finishDrink: finishDrink,
-		endParty:    endParty,
+	log.Println("Welcome to the Level Up Go coffee shop!")
+	orderDrink := make(chan struct{}, baristaCount)
+	finishDrink := make(chan struct{}, baristaCount)
+	closeShop := make(chan struct{})
+	p := coffeeShop{
+		orderCoffee:  orderDrink,
+		finishCoffee: finishDrink,
+		closeShop:    closeShop,
 	}
-	for i := 0; i < bartenderCount; i++ {
-		go p.bartender(fmt.Sprint("Bartender-", i))
+	for i := 0; i < baristaCount; i++ {
+		go p.barista(fmt.Sprint("Barista-", i))
 	}
-	for i := 0; i < partyGoerCount; i++ {
-		go p.partyGoer(fmt.Sprint("Partygoer-", i))
+	for i := 0; i < customerCount; i++ {
+		go p.customer(fmt.Sprint("Customer-", i))
 	}
-	<-endParty
-	log.Println("The Level Up Go party has ended! Good night!")
+	<-closeShop
+	log.Println("The Level Up Go coffee shop has closed! Bye!")
 }

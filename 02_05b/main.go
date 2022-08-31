@@ -6,60 +6,60 @@ import (
 )
 
 // setup constants
-const bartenderCount = 3
-const partyGoerCount = 20
-const maxDrinkCount = 40
+const baristaCount = 3
+const customerCount = 20
+const maxOrderCount = 40
 
 // the total amount of drinks that the bartenders have made
-type party struct {
-	drinkCount int
+type coffeeShop struct {
+	orderCount int
 
-	orderDrink  chan struct{}
-	finishDrink chan struct{}
+	orderCoffee  chan struct{}
+	finishCoffee chan struct{}
 }
 
-// registerDrink ensures that the drink made by the bartenders is counted.
-func (p *party) registerDrink() {
-	p.drinkCount++
+// registerOrder ensures that the order made by the baristas is counted
+func (p *coffeeShop) registerOrder() {
+	p.orderCount++
 }
 
-// bartender is the bartender functionality of the party
-func (p *party) bartender(name string) {
+// barista is the resource producer of the coffee shop
+func (p *coffeeShop) barista(name string) {
 	for {
 		select {
-		case <-p.orderDrink:
-			p.registerDrink()
-			log.Printf("%s makes a drink.\n", name)
-			p.finishDrink <- struct{}{}
+		case <-p.orderCoffee:
+			p.registerOrder()
+			log.Printf("%s makes a coffee.\n", name)
+			p.finishCoffee <- struct{}{}
 		}
 	}
 }
 
-// partyGoer is the partygoer functionality of the party
-func (p *party) partyGoer(name string) {
+// customer is the resource consumer of the coffee shop
+func (p *coffeeShop) customer(name string) {
 	for {
 		select {
-		case p.orderDrink <- struct{}{}:
-			log.Printf("%s orders a drink!", name)
-			<-p.finishDrink
-			log.Printf("%s enjoys a drink!\n", name)
+		case p.orderCoffee <- struct{}{}:
+			log.Printf("%s orders a coffee!", name)
+			<-p.finishCoffee
+			log.Printf("%s enjoys a coffee!\n", name)
 		}
 	}
 }
 
 func main() {
-	log.Println("Welcome to the Level Up Go party!")
-	orderDrink := make(chan struct{}, bartenderCount)
-	finishDrink := make(chan struct{}, bartenderCount)
-	p := party{
-		orderDrink:  orderDrink,
-		finishDrink: finishDrink,
+	log.Println("Welcome to the Level Up Go coffee shop!")
+	orderDrink := make(chan struct{}, baristaCount)
+	finishDrink := make(chan struct{}, baristaCount)
+	p := coffeeShop{
+		orderCoffee:  orderDrink,
+		finishCoffee: finishDrink,
 	}
-	for i := 0; i < bartenderCount; i++ {
-		go p.bartender(fmt.Sprint("Bartender-", i))
+	for i := 0; i < baristaCount; i++ {
+		go p.barista(fmt.Sprint("Barista-", i))
 	}
-	for i := 0; i < partyGoerCount; i++ {
-		go p.partyGoer(fmt.Sprint("Partygoer-", i))
+	for i := 0; i < customerCount; i++ {
+		go p.customer(fmt.Sprint("Customer-", i))
 	}
-	log.Println("The Level Up Go party has ended! Good night!")
+	log.Println("The Level Up Go coffee shop has closed! Bye!")
 }
