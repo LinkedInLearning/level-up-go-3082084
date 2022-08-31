@@ -64,12 +64,12 @@ func (p *coffeeShop) customer(name string) {
 
 func main() {
 	log.Println("Welcome to the Level Up Go coffee shop!")
-	orderDrink := make(chan struct{}, baristaCount)
-	finishDrink := make(chan struct{}, baristaCount)
+	orderCoffee := make(chan struct{}, baristaCount)
+	finishCoffee := make(chan struct{}, baristaCount)
 	closeShop := make(chan struct{})
 	p := coffeeShop{
-		orderCoffee:  orderDrink,
-		finishCoffee: finishDrink,
+		orderCoffee:  orderCoffee,
+		finishCoffee: finishCoffee,
 		closeShop:    closeShop,
 	}
 	for i := 0; i < baristaCount; i++ {

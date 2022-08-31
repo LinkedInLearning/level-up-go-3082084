@@ -49,11 +49,11 @@ func (p *coffeeShop) customer(name string) {
 
 func main() {
 	log.Println("Welcome to the Level Up Go coffee shop!")
-	orderDrink := make(chan struct{}, baristaCount)
-	finishDrink := make(chan struct{}, baristaCount)
+	orderCoffee := make(chan struct{}, baristaCount)
+	finishCoffee := make(chan struct{}, baristaCount)
 	p := coffeeShop{
-		orderCoffee:  orderDrink,
-		finishCoffee: finishDrink,
+		orderCoffee:  orderCoffee,
+		finishCoffee: finishCoffee,
 	}
 	for i := 0; i < baristaCount; i++ {
 		go p.barista(fmt.Sprint("Barista-", i))
