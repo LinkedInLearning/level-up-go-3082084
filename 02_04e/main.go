@@ -63,7 +63,7 @@ func (a *auctioneer) processWinner(item string, bids <-chan bid) {
 	a.bidders[winner.bidderID].payBid(winner.amount)
 }
 
-// bidder is a type that pais the bidder to their wallet
+// bidder is a type that pays the bidder to their wallet
 type bidder struct {
 	id     string
 	wallet int
