@@ -1,34 +1,16 @@
-# Go Code Challenges
-This is the repository for the LinkedIn Learning course `Go Code Challenges`. The full course is available from [LinkedIn Learning][lil-course-url].
+# Level Up: Go 
+This is the repository for the LinkedIn Learning course Level Up: Go . The full course is available from [LinkedIn Learning][lil-course-url].
 
-_See the readme file in the main branch for updated instructions and information._
-## Instructions
-This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
+![Level Up: Go ][lil-thumbnail-url]
 
-## Branches
-The branches are structured to correspond to the videos in the course. The naming convention is `CHAPTER#_MOVIE#`. As an example, the branch named `02_03` corresponds to the second chapter and the third video in that chapter. 
-Some branches will have a beginning and an end state. These are marked with the letters `b` for "beginning" and `e` for "end". The `b` branch contains the code as it is at the beginning of the movie. The `e` branch contains the code as it is at the end of the movie. The `main` branch holds the final state of the code when in the course.
+Are you a Go engineer looking to exercise and improve your knowledge? This course with Adelina Simion provides fun challenges that span across a variety of technical topics to help you test your skills and gain confidence when writing Go code. Adelina presents 15 creative challenges, each focusing on a part of the Go standard library. The challenges are self-contained and range in difficulty, so you can solve them in any order. The first 10 challenges cover topics like dates, JSON, maps, and recursion. The last five challenges are all concurrency simulation challenges that will allow you to practice using goroutines and channels. If you’re looking to level up your Go programming skills, check out these challenges.<br><br>This course is integrated with GitHub Codespaces, an instant cloud developer environment that offers all the functionality of your favorite IDE without the need for any local machine setup. With GitHub Codespaces, you can get hands-on practice from any machine, at any time—all while using a tool that you’ll likely encounter in the workplace. <br><br>Each installment of the <em>Level Up</em> series offers at least 15 bite-sized opportunities to practice programming at various levels of difficulty, so you can challenge yourself and reinforce what you’ve learned. Check out the [Using GitHub Codespaces with this course][gcs-video-url] video to learn how to get a codespace up and running.
 
-When switching from one exercise files branch to the next after making changes to the files, you may get a message like this:
+### Instructor
 
-    error: Your local changes to the following files would be overwritten by checkout:        [files]
-    Please commit your changes or stash them before you switch branches.
-    Aborting
+Adelina Simeon
 
-To resolve this issue:
-	
-    Add changes to git using this command: git add .
-	Commit changes using this command: git commit -m "some message"
+Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/adelina-simion).
 
-## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
-
-
-[0]: # (Replace these placeholder URLs with actual course URLs)
-
-[lil-course-url]: https://www.linkedin.com/learning/
-[lil-thumbnail-url]: http://
-
+[lil-course-url]: https://www.linkedin.com/learning/level-up-go
+[lil-thumbnail-url]: https://media.licdn.com/dms/image/D560DAQEqnKBLJFgWRg/learning-public-crop_675_1200/0/1666990042497?e=1667952000&v=beta&t=GcUbfqW7vThNOQj2T90hQh2rIQldQvntHL4SFyFJHqM
+[gcs-video-url]: https://www.linkedin.com/learning/level-up-go/using-github-codespaces-with-this-course
