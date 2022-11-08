@@ -1,5 +1,5 @@
 # Level Up: Go 
-This is the repository for the LinkedIn Learning course Level Up: Go . The full course is available from [LinkedIn Learning][lil-course-url].
+This is the repository for the LinkedIn Learning course Level Up: Go. The full course is available from [LinkedIn Learning][lil-course-url].
 
 ![Level Up: Go ][lil-thumbnail-url]
 
