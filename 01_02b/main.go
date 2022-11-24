@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"log"
+	"strings"
 	"time"
 )
 
@@ -16,7 +18,21 @@ func print(msg string) {
 // slowDown takes the given string and repeats its characters
 // according to their index in the string.
 func slowDown(msg string) {
-	panic("NOT IMPLEMENTED")
+	wordSlice := strings.Split(msg, " ")
+	// fmt.Println(singleLetter)
+
+
+	for _, word := range wordSlice {
+		var buffer bytes.Buffer
+		letterSlice := strings.Split(word, "")
+		for i, letter := range letterSlice{
+			for j:=0; j < i+1; j++{
+				buffer.WriteString(letter)
+			}
+		}
+		print(buffer.String())
+	}
+
 }
 
 func main() {
