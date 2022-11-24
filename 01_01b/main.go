@@ -1,27 +1,32 @@
 package main
 
 import (
-	"flag"
+	"fmt"
 	"log"
 	"time"
 )
-
 var expectedFormat = "2006-01-02"
-
 // parseTime validates and parses a given date string.
 func parseTime(target string) time.Time {
-	panic("NOT IMPLEMENTED")
+	inputTime, err := time.Parse(expectedFormat, target)
+	if err != nil || time.Now().After(inputTime) {
+		log.Fatal("invalid target date", target)
+	}
+	return inputTime
 }
 
 // calcSleeps returns the number of sleeps until the target.
 func calcSleeps(target time.Time) float64 {
-	panic("NOT IMPLEMENTED")
+	sleepTime := time.Until(target)
+	return sleepTime.Hours() / 24
 }
 
 func main() {
-	bday := flag.String("bday", "", "Your next bday in YYYY-MM-DD format")
-	flag.Parse()
-	target := parseTime(*bday)
+	var bday string
+	fmt.Println("Your next bday in YYYY-MM-DD format")
+	fmt.Scan(&bday)
+
+	target := parseTime(bday)
 	log.Printf("You have %d sleeps until your birthday. Hurray!",
-		int(calcSleeps(target)))
+	int(calcSleeps(target)))
 }
