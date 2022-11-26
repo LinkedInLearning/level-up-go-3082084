@@ -48,5 +48,4 @@ func main() {
 	winner := getWinner(entries)
 	time.Sleep(500 * time.Millisecond)
 	log.Println(winner)
-	fmt.Println("debugging the data")
 }

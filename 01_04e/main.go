@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"math"
 )
@@ -49,8 +50,9 @@ func printCoins(change map[coin]int) {
 }
 
 func main() {
-	amount := flag.Float64("amount", 0.0, "The amount you want to make change for")
+	amount := flag.Float64("amount", 2.42, "The amount you want to make change for")
 	flag.Parse()
 	change := calculateChange(*amount)
 	printCoins(change)
+	fmt.Println(change)
 }
