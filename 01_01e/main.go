@@ -26,6 +26,13 @@ func calcSleeps(target time.Time) float64 {
 func main() {
 	bday := flag.String("bday", "", "Your next bday in YYYY-MM-DD format")
 	flag.Parse()
+	
+	//if user do not put any date as arguments
+	if *bday == "" {
+		log.Println("\nPlease, add command line arguments:")
+		flag.PrintDefaults()
+		return
+	}
 	target := parseTime(*bday)
 	log.Printf("You have %d sleeps until your birthday. Hurray!",
 		int(calcSleeps(target)))
