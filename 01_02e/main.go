@@ -18,12 +18,15 @@ func print(msg string) {
 // according to their index in the string.
 func slowDown(msg string) {
 	words := strings.Split(msg, " ")
+
 	for _, w := range words {
 		var pw []string
+
 		for i, c := range w {
 			rb := strings.Repeat(string(c), i+1)
 			pw = append(pw, rb)
 		}
+
 		print(strings.Join(pw, ""))
 	}
 }
